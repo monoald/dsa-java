@@ -26,15 +26,19 @@ public final class Arrays {
             System.out.print(arr[i] + " ");
         }
     }
-    public static int[] reverse(int[] arr) {
-        int[] reverseArr = new int[arr.length];
-        int index = arr.length - 1;
+    public static void reverse(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        int temp;
 
-        for (int i = 0; i < arr.length; i++) {
-            reverseArr[index] = arr[i];
-            index--;
+        while (start < end) {
+            temp = arr[start];
+
+            arr[start] = arr[end];
+            arr[end] = temp;
+
+            start++;
+            end--;
         }
-
-        return reverseArr;
     }
 }
