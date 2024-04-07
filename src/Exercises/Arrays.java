@@ -41,7 +41,6 @@ public final class Arrays {
             end--;
         }
     }
-
     public static int min(int[] arr) {
         int min = arr[0];
 
@@ -52,5 +51,20 @@ public final class Arrays {
         }
 
         return min;
+    }
+    public static int secondMax(int[] arr) {
+        int max = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                secondMax = max;
+                max = arr[i];
+            } else if (arr[i] > secondMax && arr[i] < max) {
+                secondMax = arr[i];
+            }
+        }
+
+        return secondMax;
     }
 }

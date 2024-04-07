@@ -7,7 +7,8 @@ public class Main {
         // int[] oddNumbers = Arrays.removeEven(arr);
         // Arrays.reverse((arr));
         // Arrays.printInt(arr);
-        int min = Arrays.min(arr);
-        System.out.print("Min number: " + min);
+        // int min = Arrays.min(arr);
+        int secondMax = Arrays.secondMax(arr);
+        System.out.print("Second max number: " + secondMax);
     }
 }
