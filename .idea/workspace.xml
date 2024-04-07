@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b7ab949e-6e85-45e1-b463-fa6b48feb8f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Arrays/Exercises.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/Exercises.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercises/Arrays.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/Arrays.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +44,11 @@
     &quot;onboarding.tips.debug.path&quot;: &quot;/home/monoald/java/dsa-java/src/Main.java&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Arrays" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
