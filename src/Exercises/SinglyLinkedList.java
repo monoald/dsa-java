@@ -6,10 +6,10 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
+        sll.head = new ListNode(1);
+        ListNode second = new ListNode(8);
+        ListNode third = new ListNode(10);
+        ListNode fourth = new ListNode(16);
 
         // Connect the Nodes
         sll.head.next = second;
@@ -17,7 +17,7 @@ public class SinglyLinkedList {
         third.next = fourth;
 
         sll.print();
-        sll.delete(15);
+        sll.insertInOrder(25);
         sll.print();
 
     }
@@ -160,5 +160,37 @@ public class SinglyLinkedList {
             currentNode = currentNode.next;
         }
         previousNode.next = currentNode.next;
+    }
+    public void insertInOrder(int data) {
+        ListNode newNode = new ListNode(data);
+        ListNode currentNode = this.head;
+        ListNode previousNode = null;
+
+        if (currentNode == null) {
+            this.head = newNode;
+            return;
+        } else if (currentNode.next == null) {
+            if (currentNode.data > data) {
+                newNode.next = currentNode;
+                this.head = newNode;
+            } else {
+                currentNode.next = newNode;
+            }
+            return;
+        }
+
+        if (currentNode.data > data) {
+            newNode.next = this.head;
+            this.head = newNode;
+            return;
+        }
+
+        while (currentNode != null && currentNode.data <= data) {
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        newNode.next = currentNode;
+        previousNode.next = newNode;
     }
 }
