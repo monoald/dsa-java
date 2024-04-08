@@ -7,17 +7,21 @@ public class SinglyLinkedList {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(1);
-        ListNode second = new ListNode(8);
-        ListNode third = new ListNode(10);
-        ListNode fourth = new ListNode(16);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(2);
+        ListNode fourth = new ListNode(3);
+        ListNode fifth = new ListNode(3);
+        ListNode sixth = new ListNode(3);
 
         // Connect the Nodes
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
 
         sll.print();
-        sll.insertInOrder(25);
+        sll.removeAllDuplicate();
         sll.print();
 
     }
@@ -192,5 +196,22 @@ public class SinglyLinkedList {
 
         newNode.next = currentNode;
         previousNode.next = newNode;
+    }
+    public void removeAllDuplicate() {
+        if (this.head == null) {
+            return;
+        } else if (this.head.next == null) {
+            return;
+        }
+
+        ListNode currentNode = this.head;
+
+        while (currentNode.next != null) {
+            if (currentNode.data == currentNode.next.data) {
+                currentNode.next = currentNode.next.next;
+                continue;
+            }
+            currentNode = currentNode.next;
+        }
     }
 }
