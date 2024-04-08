@@ -17,7 +17,7 @@ public class SinglyLinkedList {
         third.next = fourth;
 
         sll.print();
-        System.out.println(sll.delete(5).data);
+        sll.delete(15);
         sll.print();
 
     }
@@ -117,7 +117,7 @@ public class SinglyLinkedList {
 
         return last;
     }
-    public ListNode delete(int position) {
+    public ListNode deleteAt(int position) {
         if (position == 1) {
             ListNode toRemove = head;
             this.head = head.next;
@@ -140,5 +140,25 @@ public class SinglyLinkedList {
         currentNode.next = toRemove.next;
 
         return toRemove;
+    }
+    public void delete(int data) {
+        ListNode currentNode = this.head;
+        ListNode previousNode = this.head;
+
+        if (currentNode == null) {
+            return;
+        } else if (currentNode.data == data) {
+            this.head = this.head.next;
+            return;
+        }
+
+        while (currentNode.data != data) {
+            if (currentNode.next == null) {
+                return;
+            }
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        previousNode.next = currentNode.next;
     }
 }
