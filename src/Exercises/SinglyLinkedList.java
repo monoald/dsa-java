@@ -19,12 +19,13 @@ public class SinglyLinkedList {
         // printSLL(sll.head);
         // int count = length(sll.head);
         // System.out.print("Length is: " + count);
-        // insertFirst(sll, 6);
-        // insertFirst(sll, 90);
+        // sll.insertFirst(6);
+        // sll.insertFirst(90);
         // sll.insertLast(5);
         // sll.insertLast(3);
         // sll.insertLast(84);
-        // printSLL(sll.head);
+        // sll.insert(5, 800);
+        // sll.insert(1, 79);
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -54,16 +55,17 @@ public class SinglyLinkedList {
 
         return count;
     }
-    private static void insertFirst(SinglyLinkedList sll, int newSllData) {
-        ListNode newHead = new ListNode(newSllData);
-        newHead.next = sll.head;
-        sll.head = newHead;
+    private void insertFirst(int data) {
+        ListNode newHead = new ListNode(data);
+        newHead.next = this.head;
+        this.head = newHead;
     }
     private void insertLast(int data) {
         ListNode newNode = new ListNode(data);
 
         if (this.head.next == null) {
             this.head.next = newNode;
+            return;
         }
 
         ListNode current = this.head;
@@ -73,5 +75,25 @@ public class SinglyLinkedList {
         }
 
         current.next = newNode;
+    }
+    public void insert(int position, int data) {
+        if (position == 1) {
+            insertFirst(data);
+            return;
+        }
+
+        ListNode newNode = new ListNode(data);
+        ListNode currentNode = this.head;
+        int currentPosition = 1;
+
+        while (currentPosition < position - 1) {
+            if (currentNode.next == null) {
+                throw new Error("Linked List Out of Bound.");
+            }
+            currentNode = currentNode.next;
+            currentPosition++;
+        }
+        newNode.next = currentNode.next;
+        currentNode.next = newNode;
     }
 }
