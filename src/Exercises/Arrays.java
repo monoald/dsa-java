@@ -101,4 +101,19 @@ public final class Arrays {
 
         return sum;
     }
+    public static boolean isPalindrome(String text) {
+        char[] arr = text.toCharArray();
+        int start = 0;
+        int end = text.length() - 1;
+
+        while (start < end) {
+            if (arr[start] != arr[end]) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
 }

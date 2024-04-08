@@ -11,7 +11,8 @@ public class Main {
         // int secondMax = Arrays.secondMax(arr);
         // Arrays.zeroLast(arr);
         // arr = Arrays.resize(arr, 8);
-        int missinNum = Arrays.findMissingNumber(arr);
-        System.out.print(missinNum);
+        // int missingNum = Arrays.findMissingNumber(arr);
+        boolean isPalindrome = Arrays.isPalindrome("that");
+        System.out.print("Text is palindrome: " + isPalindrome);
     }
 }
