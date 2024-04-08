@@ -1,9 +1,11 @@
 import Exercises.Arrays;
+import Exercises.SinglyLinkedList;
 
 public class Main {
     public static void main(String[] args) {
         int[] arr = {2,5,1,6,3,7};
 
+        // ---------Arrays---------
         // int[] oddNumbers = Arrays.removeEven(arr);
         // Arrays.reverse((arr));
         // Arrays.printInt(arr);
@@ -12,7 +14,5 @@ public class Main {
         // Arrays.zeroLast(arr);
         // arr = Arrays.resize(arr, 8);
         // int missingNum = Arrays.findMissingNumber(arr);
-        boolean isPalindrome = Arrays.isPalindrome("that");
-        System.out.print("Text is palindrome: " + isPalindrome);
     }
 }
