@@ -16,10 +16,12 @@ public class SinglyLinkedList {
         second.next = third;
         third.next = fourth;
 
-        printSLL(sll.head);
+        // printSLL(sll.head);
+        int count = length(sll.head);
+        System.out.print("Length is: " + count);
     }
     private static class ListNode {
-        private int data; // Generic Type
+        private final int data; // Generic Type
         private ListNode next;
 
         public ListNode(int data) {
@@ -34,5 +36,16 @@ public class SinglyLinkedList {
             current = current.next;
         }
         System.out.print("null");
+    }
+    private static int length(ListNode sll) {
+        int count = 0;
+        ListNode current = sll;
+
+        while (current != null) {
+            count++;
+            current = current.next;
+        }
+
+        return count;
     }
 }
