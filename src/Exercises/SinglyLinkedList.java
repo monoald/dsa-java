@@ -6,23 +6,18 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(1);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(2);
-        ListNode fourth = new ListNode(3);
-        ListNode fifth = new ListNode(3);
-        ListNode sixth = new ListNode(3);
+        sll.head = new ListNode(10);
+        ListNode second = new ListNode(8);
+        ListNode third = new ListNode(1);
+        ListNode fourth = new ListNode(11);
 
         // Connect the Nodes
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
-        fourth.next = fifth;
-        fifth.next = sixth;
 
         sll.print();
-        sll.removeAllDuplicate();
-        sll.print();
+        System.out.println(sll.find(10));
 
     }
     private static class ListNode {
@@ -213,5 +208,21 @@ public class SinglyLinkedList {
             }
             currentNode = currentNode.next;
         }
+    }
+    public boolean find(int data) {
+        if (this.head == null) {
+            return  false;
+        }
+
+        ListNode currentNode = this.head;
+
+        while(currentNode != null) {
+            if (currentNode.data == data) {
+                return true;
+            }
+            currentNode = currentNode.next;
+        }
+
+        return false;
     }
 }
