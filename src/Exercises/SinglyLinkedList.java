@@ -7,28 +7,19 @@ public class SinglyLinkedList {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(8);
-        ListNode fourth = new ListNode(11);
+//        ListNode second = new ListNode(1);
+//        ListNode third = new ListNode(8);
+//        ListNode fourth = new ListNode(11);
 
         // Connect the Nodes
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
+//        sll.head.next = second;
+//        second.next = third;
+//        third.next = fourth;
 
-        // printSLL(sll.head);
-        // int count = length(sll.head);
-        // System.out.print("Length is: " + count);
-        // sll.insertFirst(6);
-        // sll.insertFirst(90);
-        // sll.insertLast(5);
-        // sll.insertLast(3);
-        // sll.insertLast(84);
-        // sll.insert(5, 800);
-        // sll.insert(1, 79);
-        // printSLL(sll.head);
-        // System.out.println(sll.deleteFirst().data);
-        // printSLL(sll.head);
+        sll.print();
+        System.out.println(sll.deleteLast().data);
+        sll.print();
+
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -39,8 +30,8 @@ public class SinglyLinkedList {
             this.next = null;
         }
     }
-    private static void printSLL(ListNode sll) {
-        ListNode current = sll;
+    private void print() {
+        ListNode current = this.head;
         while(current != null) {
             System.out.print(current.data + " ---> ");
             current = current.next;
@@ -109,5 +100,21 @@ public class SinglyLinkedList {
         first.next = null;
 
         return first;
+    }
+    public ListNode deleteLast() {
+        if (this.head == null || this.head.next == null) {
+            return head;
+        }
+
+        ListNode currentNode = this.head;
+
+        while (currentNode.next != null && currentNode.next.next != null) {
+            currentNode = currentNode.next;
+        }
+
+        ListNode last = currentNode.next;
+        currentNode.next = null;
+
+        return last;
     }
 }
