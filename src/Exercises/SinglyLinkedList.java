@@ -26,6 +26,9 @@ public class SinglyLinkedList {
         // sll.insertLast(84);
         // sll.insert(5, 800);
         // sll.insert(1, 79);
+        // printSLL(sll.head);
+        // System.out.println(sll.deleteFirst().data);
+        // printSLL(sll.head);
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -42,7 +45,7 @@ public class SinglyLinkedList {
             System.out.print(current.data + " ---> ");
             current = current.next;
         }
-        System.out.print("null");
+        System.out.println("null");
     }
     private static int length(ListNode sll) {
         int count = 0;
@@ -95,5 +98,16 @@ public class SinglyLinkedList {
         }
         newNode.next = currentNode.next;
         currentNode.next = newNode;
+    }
+    public ListNode deleteFirst() {
+        if (this.head == null) {
+            return null;
+        }
+
+        ListNode first = this.head;
+        this.head = this.head.next;
+        first.next = null;
+
+        return first;
     }
 }
