@@ -82,4 +82,13 @@ public final class Arrays {
             }
         }
     }
+    public static int[] resize(int[] arr, int size) {
+        int[] resized = new int[size];
+
+        for (int i = 0; i < arr.length; i++) {
+            resized[i] = arr[i];
+        }
+
+        return resized;
+    }
 }
