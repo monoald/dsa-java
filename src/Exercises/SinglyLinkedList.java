@@ -7,17 +7,17 @@ public class SinglyLinkedList {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(10);
-//        ListNode second = new ListNode(1);
-//        ListNode third = new ListNode(8);
-//        ListNode fourth = new ListNode(11);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(8);
+        ListNode fourth = new ListNode(11);
 
         // Connect the Nodes
-//        sll.head.next = second;
-//        second.next = third;
-//        third.next = fourth;
+        sll.head.next = second;
+        second.next = third;
+        third.next = fourth;
 
         sll.print();
-        System.out.println(sll.deleteLast().data);
+        System.out.println(sll.delete(5).data);
         sll.print();
 
     }
@@ -116,5 +116,29 @@ public class SinglyLinkedList {
         currentNode.next = null;
 
         return last;
+    }
+    public ListNode delete(int position) {
+        if (position == 1) {
+            ListNode toRemove = head;
+            this.head = head.next;
+            return toRemove;
+        }
+
+        int currentPosition = 1;
+        ListNode currentNode = this.head;
+
+        while (currentPosition < position - 1) {
+            currentNode = currentNode.next;
+            currentPosition++;
+
+            if (currentNode.next == null) {
+                throw new Error("Linked List Out of Bound");
+            }
+        }
+
+        ListNode toRemove = currentNode.next;
+        currentNode.next = toRemove.next;
+
+        return toRemove;
     }
 }
