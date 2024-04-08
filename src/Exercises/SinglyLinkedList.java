@@ -17,8 +17,10 @@ public class SinglyLinkedList {
         third.next = fourth;
 
         // printSLL(sll.head);
-        int count = length(sll.head);
-        System.out.print("Length is: " + count);
+        // int count = length(sll.head);
+        // System.out.print("Length is: " + count);
+        // insertFirst(sll, 6);
+        // insertFirst(sll, 90);
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -47,5 +49,10 @@ public class SinglyLinkedList {
         }
 
         return count;
+    }
+    private static void insertFirst(SinglyLinkedList sll, int newSllData) {
+        ListNode newHead = new ListNode(newSllData);
+        newHead.next = sll.head;
+        sll.head = newHead;
     }
 }
