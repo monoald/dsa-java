@@ -6,10 +6,10 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(10);
-        ListNode second = new ListNode(8);
-        ListNode third = new ListNode(1);
-        ListNode fourth = new ListNode(11);
+        sll.head = new ListNode(8);
+        ListNode second = new ListNode(1);
+        ListNode third = new ListNode(5);
+        ListNode fourth = new ListNode(3);
 
         // Connect the Nodes
         sll.head.next = second;
@@ -17,8 +17,8 @@ public class SinglyLinkedList {
         third.next = fourth;
 
         sll.print();
-        System.out.println(sll.find(10));
-
+        sll.reverse();
+        sll.print();
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -224,5 +224,22 @@ public class SinglyLinkedList {
         }
 
         return false;
+    }
+    public void reverse() {
+        if (this.head == null || this.head.next == null) {
+            return;
+        }
+        ListNode previousNode = null;
+        ListNode currentNode = this.head;
+        ListNode nextNode;
+
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+
+        }
+        this.head = previousNode;
     }
 }
