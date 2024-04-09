@@ -10,10 +10,10 @@ public class SinglyLinkedList {
         sll.insertLast(1);
         sll.insertLast(5);
         sll.insertLast(3);
-         sll.insertLast(3);
+        sll.insertLast(5);
 
         sll.print();
-        System.out.println("middle node: " + sll.findMiddle().data);
+        System.out.println("Node: " + sll.findFromEnd(8));
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -253,5 +253,33 @@ public class SinglyLinkedList {
         }
 
         return slowPointer;
+    }
+    public ListNode findFromEnd(int position) {
+        if (this.head == null) {
+            return this.head;
+        }
+
+        if (position <= 0) {
+            throw new IllegalArgumentException("Invalid value: n = " + position);
+        }
+
+        ListNode currentNode = this.head;
+        ListNode distanceNode = this.head;
+        int distance = 0;
+
+        while (distance < position) {
+            if (distanceNode == null) {
+                throw new IllegalArgumentException(position + " Is greater than the number of nodes in the list");
+            }
+            distanceNode = distanceNode.next;
+            distance++;
+        }
+
+        while (distanceNode != null) {
+            currentNode = currentNode.next;
+            distanceNode = distanceNode.next;
+        }
+
+        return currentNode;
     }
 }
