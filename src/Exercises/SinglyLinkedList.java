@@ -7,18 +7,13 @@ public class SinglyLinkedList {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
         sll.head = new ListNode(8);
-        ListNode second = new ListNode(1);
-        ListNode third = new ListNode(5);
-        ListNode fourth = new ListNode(3);
-
-        // Connect the Nodes
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
+        sll.insertLast(1);
+        sll.insertLast(5);
+        sll.insertLast(3);
+         sll.insertLast(3);
 
         sll.print();
-        sll.reverse();
-        sll.print();
+        System.out.println("middle node: " + sll.findMiddle().data);
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -241,5 +236,22 @@ public class SinglyLinkedList {
 
         }
         this.head = previousNode;
+    }
+    public ListNode findMiddle() {
+        if (this.head == null || this.head.next == null) {
+            return this.head;
+        } else if (this.head.next.next == null) {
+            return this.head.next;
+        }
+
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+
+        while (fastPointer != null && fastPointer.next != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+        }
+
+        return slowPointer;
     }
 }
