@@ -8,7 +8,11 @@ public class CircularSinglyLinkedList {
         CircularSinglyLinkedList cll = new CircularSinglyLinkedList();
         cll.createCircularLinkedList();
         cll.print();
-        cll.insertFirst(54);
+        System.out.println("Length: " + cll.length);
+        System.out.println("Last: " + cll.last.data);
+        cll.insertLast(54);
+        System.out.println("Length: " + cll.length);
+        System.out.println("Last: " + cll.last.data);
         cll.print();
     }
     private static class ListNode {
@@ -65,8 +69,22 @@ public class CircularSinglyLinkedList {
         } else {
             newNode.next = this.last.next;
         }
-        
+
         this.last.next = newNode;
+        length++;
+    }
+    public void insertLast(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if (this.last == null) {
+            this.last = newNode;
+            length++;
+            return;
+        }
+
+        newNode.next = this.last.next;
+        this.last.next = newNode;
+        this.last = newNode;
         length++;
     }
 }
