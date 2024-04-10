@@ -7,13 +7,14 @@ public class DoublyLinkedList {
 
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
-        dll.insertLast(1);
-        dll.insertLast(10);
-        dll.insertLast(15);
-        dll.insertLast(25);
+        dll.insertStart(1);
+        dll.insertStart(10);
+        dll.insertStart(15);
+        dll.insertStart(25);
 
         dll.print();
         dll.printFromTail();
+        System.out.println(dll.tail.data);
     }
 
     public static class ListNode {
@@ -39,7 +40,7 @@ public class DoublyLinkedList {
     public int length() {
         return this.length;
     }
-    public void insertLast(int data) {
+    public void insertEnd(int data) {
         ListNode newNode = new ListNode(data);
 
         if (isEmpty()) {
@@ -52,6 +53,21 @@ public class DoublyLinkedList {
         this.tail.next = newNode;
         newNode.prev = this.tail;
         this.tail = newNode;
+        this.length++;
+    }
+    public void insertStart(int data) {
+        ListNode newNode = new ListNode(data);
+
+        if(isEmpty()) {
+            this.head = newNode;
+            this.tail = newNode;
+            this.length++;
+            return;
+        }
+
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
         this.length++;
     }
     public void print() {
