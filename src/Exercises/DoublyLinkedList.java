@@ -54,4 +54,24 @@ public class DoublyLinkedList {
         this.tail = newNode;
         this.length++;
     }
+    public void print() {
+        ListNode currentNode = this.head;
+
+        while (currentNode != null) {
+            System.out.print(currentNode.data + " ---> ");
+            currentNode = currentNode.next;
+        }
+
+        System.out.println("null");
+    }
+    public void printFromTail() {
+        ListNode currentNode = this.tail;
+
+        while (currentNode != null) {
+            System.out.print(currentNode.data + " ---> ");
+            currentNode = currentNode.prev;
+        }
+
+        System.out.println("null");
+    }
 }
