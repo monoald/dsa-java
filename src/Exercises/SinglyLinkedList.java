@@ -9,19 +9,21 @@ public class SinglyLinkedList {
         sll.head = new ListNode(1);
         ListNode second = new ListNode(2);
         ListNode third = new ListNode(3);
-        ListNode fourth = new ListNode(3);
-        ListNode fifth = new ListNode(3);
-        ListNode sixth = new ListNode(3);
+        ListNode fourth = new ListNode(4);
+        ListNode fifth = new ListNode(5);
+        ListNode sixth = new ListNode(6);
+        ListNode seventh = new ListNode(6);
 
         sll.head.next = second;
         second.next = third;
         third.next = fourth;
         fourth.next = fifth;
         fifth.next = sixth;
-        sixth.next = sll.head;
+        sixth.next = seventh;
+        //seventh.next = second;
 
 
-        System.out.println("Has a loop: " + sll.isLoop());
+        System.out.println("Has a loop: " + sll.HeadNodeOfLoop());
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -308,5 +310,31 @@ public class SinglyLinkedList {
         }
 
         return false;
+    }
+    public ListNode HeadNodeOfLoop() {
+        if (this.head == null || this.head.next == null) {
+            return null;
+        }
+
+        ListNode slowNode = this.head;
+        ListNode fastNode = this.head;
+
+        while (fastNode != null && fastNode.next != null) {
+            fastNode = fastNode.next.next;
+            slowNode = slowNode.next;
+
+            if (fastNode == slowNode) {
+                ListNode currentNode = this.head;
+
+                while (fastNode != currentNode) {
+                    fastNode = fastNode.next;
+                    currentNode = currentNode.next;
+                }
+
+                return currentNode;
+            }
+        }
+
+        return null;
     }
 }
