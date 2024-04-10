@@ -6,14 +6,22 @@ public class SinglyLinkedList {
     public static void main(String[] args) {
         // Create
         SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(8);
-        sll.insertLast(1);
-        sll.insertLast(5);
-        sll.insertLast(3);
-        sll.insertLast(5);
+        sll.head = new ListNode(1);
+        ListNode second = new ListNode(2);
+        ListNode third = new ListNode(3);
+        ListNode fourth = new ListNode(3);
+        ListNode fifth = new ListNode(3);
+        ListNode sixth = new ListNode(3);
 
-        sll.print();
-        System.out.println("Node: " + sll.findFromEnd(8));
+        sll.head.next = second;
+        second.next = third;
+        third.next = fourth;
+        fourth.next = fifth;
+        fifth.next = sixth;
+        sixth.next = sll.head;
+
+
+        System.out.println("Has a loop: " + sll.isLoop());
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -281,5 +289,24 @@ public class SinglyLinkedList {
         }
 
         return currentNode;
+    }
+    public boolean isLoop() {
+        if (this.head == null || this.head.next == null) {
+            return false;
+        }
+
+        ListNode slowNode = this.head;
+        ListNode fastNode = this.head;
+
+        while (fastNode != null && fastNode.next != null) {
+            slowNode = slowNode.next;
+            fastNode = fastNode.next.next;
+
+            if (fastNode == slowNode) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
