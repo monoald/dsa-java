@@ -11,19 +11,10 @@ public class DoublyLinkedList {
         DoublyLinkedList dll = new DoublyLinkedList();
         dll.insertFirst(1);
         dll.insertFirst(10);
-//        dll.insertFirst(15);
-//        dll.insertFirst(25);
+        dll.insertFirst(15);
+        dll.insertFirst(25);
 
         dll.print();
-        System.out.println("Length: " + dll.length());
-        System.out.println("Head: " + dll.head.data);
-        System.out.println("tail: " + dll.tail.data);
-        System.out.println("Node removed: " + dll.removeFirst().data);
-        dll.print();
-        System.out.println("length: " + dll.length());
-        System.out.println("Head: " + dll.head.data);
-        System.out.println("tail: " + dll.tail.data);
-        System.out.println("Head prev: " + dll.head.prev);
     }
 
     public static class ListNode {
@@ -99,7 +90,7 @@ public class DoublyLinkedList {
 
         System.out.println("null");
     }
-    public ListNode removeFirst() {
+    public ListNode deleteFirst() {
         ListNode firstNode = this.head;
         if (isEmpty()) {
             throw new NoSuchElementException();
@@ -115,5 +106,24 @@ public class DoublyLinkedList {
         this.length--;
 
         return firstNode;
+    }
+    public ListNode deleteLast() {
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        ListNode lastNode = tail;
+
+        if (this.tail == this.head) {
+            this.head = null;
+        } else {
+            tail.prev.next = null;
+        }
+
+        this.tail = lastNode.prev;
+        lastNode.prev = null;
+        this.length--;
+
+        return lastNode;
     }
 }

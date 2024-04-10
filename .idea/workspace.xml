@@ -34,7 +34,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.DoublyLinkedList.executor": "Debug",
+    "Application.DoublyLinkedList.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.SinglyLinkedList.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
