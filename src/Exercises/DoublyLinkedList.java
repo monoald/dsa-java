@@ -1,5 +1,7 @@
 package Exercises;
 
+import java.util.NoSuchElementException;
+
 public class DoublyLinkedList {
     private ListNode head;
     private ListNode tail;
@@ -7,14 +9,21 @@ public class DoublyLinkedList {
 
     public static void main(String[] args) {
         DoublyLinkedList dll = new DoublyLinkedList();
-        dll.insertStart(1);
-        dll.insertStart(10);
-        dll.insertStart(15);
-        dll.insertStart(25);
+        dll.insertFirst(1);
+        dll.insertFirst(10);
+//        dll.insertFirst(15);
+//        dll.insertFirst(25);
 
         dll.print();
-        dll.printFromTail();
-        System.out.println(dll.tail.data);
+        System.out.println("Length: " + dll.length());
+        System.out.println("Head: " + dll.head.data);
+        System.out.println("tail: " + dll.tail.data);
+        System.out.println("Node removed: " + dll.removeFirst().data);
+        dll.print();
+        System.out.println("length: " + dll.length());
+        System.out.println("Head: " + dll.head.data);
+        System.out.println("tail: " + dll.tail.data);
+        System.out.println("Head prev: " + dll.head.prev);
     }
 
     public static class ListNode {
@@ -40,7 +49,7 @@ public class DoublyLinkedList {
     public int length() {
         return this.length;
     }
-    public void insertEnd(int data) {
+    public void insertLast(int data) {
         ListNode newNode = new ListNode(data);
 
         if (isEmpty()) {
@@ -55,7 +64,7 @@ public class DoublyLinkedList {
         this.tail = newNode;
         this.length++;
     }
-    public void insertStart(int data) {
+    public void insertFirst(int data) {
         ListNode newNode = new ListNode(data);
 
         if(isEmpty()) {
@@ -89,5 +98,22 @@ public class DoublyLinkedList {
         }
 
         System.out.println("null");
+    }
+    public ListNode removeFirst() {
+        ListNode firstNode = this.head;
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        } else if (firstNode.next == null) {
+            this.head = null;
+            this.length--;
+            return firstNode;
+        }
+
+        firstNode.next.prev = null;
+        this.head = firstNode.next;
+        firstNode.next = null;
+        this.length--;
+
+        return firstNode;
     }
 }
