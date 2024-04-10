@@ -12,7 +12,7 @@ public class SinglyLinkedList {
         ListNode fourth = new ListNode(4);
         ListNode fifth = new ListNode(5);
         ListNode sixth = new ListNode(6);
-        ListNode seventh = new ListNode(6);
+        ListNode seventh = new ListNode(7);
 
         sll.head.next = second;
         second.next = third;
@@ -20,10 +20,11 @@ public class SinglyLinkedList {
         fourth.next = fifth;
         fifth.next = sixth;
         sixth.next = seventh;
-        //seventh.next = second;
+        seventh.next = second;
 
 
-        System.out.println("Has a loop: " + sll.HeadNodeOfLoop());
+        sll.unloop();
+        sll.print();
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -336,5 +337,25 @@ public class SinglyLinkedList {
         }
 
         return null;
+    }
+    public void unloop() {
+        ListNode slowNode = this.head;
+        ListNode fastNode = this.head;
+
+        while (fastNode != null && fastNode.next != null) {
+            slowNode = slowNode.next;
+            fastNode = fastNode.next.next;
+
+            if (fastNode == slowNode) {
+                ListNode currentNode = this.head;
+
+                while (currentNode.next != slowNode.next) {
+                    slowNode = slowNode.next;
+                    currentNode = currentNode.next;
+                }
+
+                slowNode.next = null;
+            }
+        }
     }
 }
