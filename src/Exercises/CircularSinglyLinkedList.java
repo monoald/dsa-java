@@ -7,6 +7,7 @@ public class CircularSinglyLinkedList {
     public static void main (String[] args) {
         CircularSinglyLinkedList cll = new CircularSinglyLinkedList();
         cll.createCircularLinkedList();
+        cll.print();
     }
     private static class ListNode {
         private ListNode next;
@@ -39,5 +40,18 @@ public class CircularSinglyLinkedList {
         fourth.next = first;
 
         this.last = fourth;
+    }
+    public void print() {
+        if (last == null) {
+            return;
+        }
+        ListNode currentNode = last.next;
+
+        while (currentNode != last) {
+            System.out.print(currentNode.data + " ---> ");
+            currentNode = currentNode.next;
+        }
+
+        System.out.println(currentNode.data);
     }
 }
