@@ -5,26 +5,26 @@ public class SinglyLinkedList {
 
     public static void main(String[] args) {
         // Create
-        SinglyLinkedList sll = new SinglyLinkedList();
-        sll.head = new ListNode(1);
-        ListNode second = new ListNode(2);
-        ListNode third = new ListNode(3);
-        ListNode fourth = new ListNode(4);
-        ListNode fifth = new ListNode(5);
-        ListNode sixth = new ListNode(6);
-        ListNode seventh = new ListNode(7);
+        SinglyLinkedList sllA = new SinglyLinkedList();
+        sllA.insertLast(1);
+        sllA.insertLast(4);
+        sllA.insertLast(8);
 
-        sll.head.next = second;
-        second.next = third;
-        third.next = fourth;
-        fourth.next = fifth;
-        fifth.next = sixth;
-        sixth.next = seventh;
-        seventh.next = second;
+        SinglyLinkedList sllB = new SinglyLinkedList();
+        sllB.insertLast(3);
+        sllB.insertLast(6);
+        //sllB.insertLast(7);
 
+        sllA.print();
+        sllB.print();
 
-        sll.unloop();
-        sll.print();
+        SinglyLinkedList sllC = new SinglyLinkedList();
+        sllC.head = SinglyLinkedList.mergeTwoOrderLists(sllA.head, sllB.head);
+
+        sllC.print();
+        sllA.print();
+        sllB.print();
+
     }
     private static class ListNode {
         private final int data; // Generic Type
@@ -62,6 +62,10 @@ public class SinglyLinkedList {
     private void insertLast(int data) {
         ListNode newNode = new ListNode(data);
 
+        if (this.head == null) {
+            this.head = newNode;
+            return;
+        }
         if (this.head.next == null) {
             this.head.next = newNode;
             return;
@@ -357,5 +361,28 @@ public class SinglyLinkedList {
                 slowNode.next = null;
             }
         }
+    }
+    public static ListNode mergeTwoOrderLists(ListNode sllA, ListNode sllB) {
+        ListNode currentC = new ListNode(0);
+        ListNode newSll = currentC;
+
+        while (sllA != null && sllB != null) {
+            if (sllA.data <= sllB.data) {
+                currentC.next = sllA;
+                sllA = sllA.next;
+            } else {
+                currentC.next = sllB;
+                sllB = sllB.next;
+            }
+            currentC = currentC.next;
+        }
+
+        if (sllA == null) {
+            currentC.next = sllB;
+        } else {
+            currentC.next = sllA;
+        }
+
+        return newSll.next;
     }
 }
