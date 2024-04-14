@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ab949e-6e85-45e1-b463-fa6b48feb8f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exercises/Stack/NextGreaterElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Exercises/Stack/BalancedBrackets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/ReverseStringWithStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/Stack/ReverseStringWithStack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Exercises/Stack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/Stack/Stack.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +35,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BalancedBrackets.executor": "Run",
     "Application.CircularSinglyLinkedList.executor": "Run",
     "Application.DoublyLinkedList.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.NextGreaterElement.executor": "Run",
     "Application.ReverseStringWithStack.executor": "Run",
     "Application.SinglyLinkedList.executor": "Run",
-    "Application.Stack.executor": "Run",
+    "Application.Stack.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
