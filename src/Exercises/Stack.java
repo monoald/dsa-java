@@ -11,9 +11,6 @@ public class Stack {
         stack.push(8);
         stack.push(1);
 
-        System.out.println("TOP: " + stack.top.data);
-        System.out.println("LENGTH: " + stack.length);
-        stack.print();
     }
 
     public Stack () {}
@@ -52,5 +49,21 @@ public class Stack {
         newNode.next = this.top;
         this.top = newNode;
         length++;
+    }
+    public ListNode pop() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+        var oldTop = this.top;
+        this.top = oldTop.next;
+        oldTop.next = null;
+        return oldTop;
+    }
+    public int peek() {
+        if (isEmpty()) {
+            throw new EmptyStackException();
+        }
+
+        return this.top.data;
     }
 }
