@@ -11,7 +11,7 @@ public class BinaryTree {
     public static void main(String[] args) {
         var binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
-        binaryTree.iterativePreOrder();
+        binaryTree.recursiveInOrder(binaryTree.root);
     }
 
     public BinaryTree () {}
@@ -78,6 +78,22 @@ public class BinaryTree {
             if (temp.left != null) {
                 stack.push(temp.left);
             }
+        }
+    }
+
+    public void recursiveInOrder(TreeNode root) {
+        if (root == null) {
+            return;
+        }
+
+        if (root.left != null) {
+            recursiveInOrder(root.left);
+        }
+
+        System.out.print(root.data + " - ");
+
+        if (root.right != null) {
+            recursiveInOrder(root.right);
         }
     }
 }
