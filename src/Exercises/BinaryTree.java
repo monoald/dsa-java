@@ -12,6 +12,8 @@ public class BinaryTree {
         var binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
         binaryTree.recursiveInOrder(binaryTree.root);
+        System.out.println(" ");
+        binaryTree.iterativeInOrder();
     }
 
     public BinaryTree () {}
@@ -94,6 +96,25 @@ public class BinaryTree {
 
         if (root.right != null) {
             recursiveInOrder(root.right);
+        }
+    }
+
+    public void iterativeInOrder() {
+        if (this.root == null) {
+            return;
+        }
+
+        var temp = this.root;
+        var stack = new Stack<TreeNode>();
+        while(!stack.isEmpty() || temp != null) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+                System.out.print(temp.data +  " - ");
+                temp = temp.right;
+            }
         }
     }
 }
