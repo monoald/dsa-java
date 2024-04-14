@@ -1,5 +1,6 @@
 package Exercises;
 
+import java.util.Arrays;
 import java.util.EmptyStackException;
 
 public class Stack {
@@ -10,7 +11,6 @@ public class Stack {
         var stack = new Stack();
         stack.push(8);
         stack.push(1);
-
     }
 
     public Stack () {}
@@ -50,14 +50,25 @@ public class Stack {
         this.top = newNode;
         length++;
     }
-    public ListNode pop() {
+    public String toString() {
+        var str = new StringBuilder();
+        var currentNode = this.top;
+
+        while (currentNode != null) {
+            str.append(Integer.toString(currentNode.data));
+            currentNode = currentNode.next;
+        }
+
+        return str.toString();
+    }
+    public int pop() {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
         var oldTop = this.top;
         this.top = oldTop.next;
         oldTop.next = null;
-        return oldTop;
+        return oldTop.data;
     }
     public int peek() {
         if (isEmpty()) {
@@ -66,4 +77,5 @@ public class Stack {
 
         return this.top.data;
     }
+
 }
