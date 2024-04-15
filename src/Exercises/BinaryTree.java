@@ -13,7 +13,11 @@ public class BinaryTree {
     public static void main(String[] args) {
         var binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
-        System.out.print("Max: " + binaryTree.max(binaryTree.root));
+
+        binaryTree.levelOrder();
+        System.out.println(" ");
+        System.out.println("BST is Symmetric: " + binaryTree.isSymmetricShort());
+//        System.out.println("BST is Symmetric: " + BinaryTree.recursiveValidate(binaryTree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 
     public BinaryTree () {}
@@ -34,11 +38,11 @@ public class BinaryTree {
     public void createBinaryTree() {
         TreeNode first = new TreeNode(1);
         TreeNode second = new TreeNode(2);
-        TreeNode third = new TreeNode(3);
-        TreeNode fourth = new TreeNode(4);
-        TreeNode fifth = new TreeNode(5);
-        TreeNode sixth = new TreeNode(6);
-        TreeNode seventh = new TreeNode(7);
+        TreeNode third = new TreeNode(2);
+        TreeNode fourth = new TreeNode(3);
+        TreeNode fifth = new TreeNode(4);
+        TreeNode sixth = new TreeNode(3);
+        TreeNode seventh = new TreeNode(4);
 
         this.root = first;
         first.left = second;
@@ -190,5 +194,70 @@ public class BinaryTree {
         if (right > result) result = right;
 
         return result;
+    }
+
+    public boolean isSymmetric() {
+        if (this.root == null || (this.root.left == null && this.root.right == null)) {
+            return true;
+        }
+
+        var tempLeft = root.left;
+        var tempRight = root.right;
+
+        if (tempLeft.data != tempRight.data) {
+            return false;
+        }
+
+        var stack = new Stack<TreeNode>();
+
+        while (!stack.isEmpty() || tempLeft != null || tempRight != null) {
+            var currentLeft = Integer.MIN_VALUE;
+            var currentRight = Integer.MIN_VALUE;
+
+            if (tempLeft != null) {
+                stack.push(tempLeft);
+                tempLeft = tempLeft.left;
+            } else {
+                tempLeft = stack.pop();
+                currentLeft = tempLeft.data;
+                tempLeft  = tempLeft.right;
+            }
+
+            if (tempRight != null) {
+                stack.push(tempRight);
+                tempRight = tempRight.right;
+            } else {
+                tempRight = stack.pop();
+                tempRight  = tempRight.left;
+            }
+
+            if (currentRight != currentLeft) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public boolean isSymmetricShort() {
+        var stack = new Stack<TreeNode>();
+        stack.push(this.root.left);
+        stack.push(this.root.right);
+
+        while (!stack.isEmpty()) {
+            var n1 = stack.pop();
+            var n2 = stack.pop();
+
+            if (n1 == null && n2 == null) continue;
+
+            if (n1 == null || n2 == null || n2.data != n1.data) return false;
+
+            stack.push(n1.left);
+            stack.push(n2.right);
+            stack.push(n1.right);
+            stack.push(n2.left);
+        }
+
+        return true;
     }
 }
