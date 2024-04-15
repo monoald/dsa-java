@@ -9,12 +9,18 @@ public class BinarySearchTree {
 
     public static void main(String[] args) {
         var binarySearchTree = new BinarySearchTree();
+        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 6);
+        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 4);
+        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 8);
+        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 2);
         binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 5);
-        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 3);
-        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 1);
         binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 7);
+        binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 9);
 
-        System.out.print("Key: " + binarySearchTree.search(binarySearchTree.root, 7).data);
+
+        binarySearchTree.inOrder();
+        System.out.println(" ");
+        System.out.println("BST is valid: " + binarySearchTree.validate());
     }
 
     public BinarySearchTree() {}
@@ -92,6 +98,33 @@ public class BinarySearchTree {
         } else {
         return search(root.right, key);
         }
+    }
 
+    public boolean validate() {
+        if (this.root == null) {
+            return false;
+        }
+
+        var stack = new Stack<TreeNode>();
+        var temp = this.root;
+        var prev = Integer.MIN_VALUE;
+
+        while (!stack.isEmpty() || temp != null) {
+            if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+            } else {
+                temp = stack.pop();
+
+                if (temp.data < prev) {
+                    return false;
+                }
+
+                prev = temp.data;
+                temp = temp.right;
+            }
+        }
+
+        return true;
     }
 }

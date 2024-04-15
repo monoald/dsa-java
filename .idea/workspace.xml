@@ -7,6 +7,7 @@
     <list default="true" id="b7ab949e-6e85-45e1-b463-fa6b48feb8f4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exercises/BinarySearchTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/BinarySearchTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercises/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
