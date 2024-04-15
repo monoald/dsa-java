@@ -14,7 +14,7 @@ public class BinarySearchTree {
         binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 1);
         binarySearchTree.root = BinarySearchTree.recursiveInsert(binarySearchTree.root, 7);
 
-        binarySearchTree.inOrder();
+        System.out.print("Key: " + binarySearchTree.search(binarySearchTree.root, 7).data);
     }
 
     public BinarySearchTree() {}
@@ -80,5 +80,18 @@ public class BinarySearchTree {
                 queue.offer(currentNode.right);
             }
         }
+    }
+
+    public TreeNode search(TreeNode root, int key) {
+        if (root == null || root.data == key) {
+            return root;
+        }
+
+        if (root.data > key) {
+            return search(root.left, key);
+        } else {
+        return search(root.right, key);
+        }
+
     }
 }
