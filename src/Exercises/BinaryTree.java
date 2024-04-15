@@ -13,7 +13,7 @@ public class BinaryTree {
     public static void main(String[] args) {
         var binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
-        binaryTree.levelOrder();
+        System.out.print("Max: " + binaryTree.max(binaryTree.root));
     }
 
     public BinaryTree () {}
@@ -175,5 +175,20 @@ public class BinaryTree {
                 queue.offer(currentNode.right);
             }
         }
+    }
+
+    public int max(TreeNode root) {
+        if (root == null) {
+            return Integer.MIN_VALUE;
+        }
+
+        var result = root.data;
+        var left = max(root.left);
+        var right = max(root.right);
+
+        if (left > result) result = left;
+        if (right > result) result = right;
+
+        return result;
     }
 }
