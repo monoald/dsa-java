@@ -21,6 +21,7 @@ public class BinarySearchTree {
         binarySearchTree.inOrder();
         System.out.println(" ");
         System.out.println("BST is valid: " + binarySearchTree.validate());
+        System.out.println("BST is valid: " + BinarySearchTree.recursiveValidate(binarySearchTree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 
     public BinarySearchTree() {}
@@ -126,5 +127,23 @@ public class BinarySearchTree {
         }
 
         return true;
+    }
+
+    public static boolean recursiveValidate(TreeNode root, int min, int max) {
+        if (root == null) {
+            return true;
+        }
+
+        if (root.data >= max || root.data <= min) {
+            return false;
+        }
+
+        boolean left = recursiveValidate(root.left, min, root.data);
+
+        if (left) {
+            return recursiveValidate(root.right, root.data, max);
+        }
+
+        return false;
     }
 }
