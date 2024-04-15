@@ -3,6 +3,8 @@ package Exercises;
 import com.sun.source.tree.Tree;
 
 import java.util.EmptyStackException;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -11,9 +13,7 @@ public class BinaryTree {
     public static void main(String[] args) {
         var binaryTree = new BinaryTree();
         binaryTree.createBinaryTree();
-        binaryTree.recursivePostOrder(binaryTree.root);
-        System.out.println(" ");
-        binaryTree.iterativePostOrder();
+        binaryTree.levelOrder();
     }
 
     public BinaryTree () {}
@@ -151,6 +151,28 @@ public class BinaryTree {
                 } else {
                     current = temp;
                 }
+            }
+        }
+    }
+
+    public void levelOrder() {
+        if (this.root == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(this.root);
+
+        while (!queue.isEmpty()) {
+            TreeNode currentNode = queue.poll();
+
+            System.out.print(currentNode.data + " - ");
+            if (currentNode.left != null) {
+                queue.offer(currentNode.left);
+            }
+
+            if (currentNode.right != null) {
+                queue.offer(currentNode.right);
             }
         }
     }
