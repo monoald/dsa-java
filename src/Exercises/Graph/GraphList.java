@@ -1,6 +1,7 @@
 package Exercises.Graph;
 
 import java.util.LinkedList;
+import java.util.Queue;
 
 public class GraphList {
     private int V;
@@ -40,12 +41,33 @@ public class GraphList {
     }
 
     public static void main(String[] args) {
-        var graph = new GraphList(4);
+        var graph = new GraphList(5);
         graph.addEdge(0,1);
         graph.addEdge(1,2);
         graph.addEdge(0,3);
         graph.addEdge(3,2);
+        graph.addEdge(2,4);
 
         System.out.println(graph);
+        graph.bfs(0);
+    }
+
+    public void bfs(int start) {
+        boolean[] visited = new boolean[this.V];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[start] = true;
+        queue.offer(start);
+
+        while (!queue.isEmpty()) {
+            int temp = queue.poll();
+            System.out.print(temp + " - ");
+
+            for (int v = 0; v < this.V; v++) {
+                if (!visited[v]) {
+                    visited[v] = true;
+                    queue.offer(v);
+                }
+            }
+        }
     }
 }

@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ab949e-6e85-45e1-b463-fa6b48feb8f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Exercises/Graph/GraphList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Exercises/Graph/GraphList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/Graph/GraphList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Exercises/SinglyLinkedList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,6 +42,7 @@
     "Application.CircularSinglyLinkedList.executor": "Run",
     "Application.DoublyLinkedList.executor": "Run",
     "Application.Graph.executor": "Run",
+    "Application.GraphList.executor": "Run",
     "Application.Main.executor": "Run",
     "Application.NextGreaterElement.executor": "Run",
     "Application.Questions.executor": "Run",
