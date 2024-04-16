@@ -2,6 +2,7 @@ package Exercises.Graph;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 public class GraphList {
     private int V;
@@ -50,6 +51,8 @@ public class GraphList {
 
         System.out.println(graph);
         graph.bfs(0);
+        System.out.println(" ");
+        graph.dfs(0);
     }
 
     public void bfs(int start) {
@@ -66,6 +69,25 @@ public class GraphList {
                 if (!visited[v]) {
                     visited[v] = true;
                     queue.offer(v);
+                }
+            }
+        }
+    }
+
+    public void dfs(int start) {
+        boolean[] visited = new boolean[this.V];
+        var stack = new Stack<Integer>();
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int temp = stack.pop();
+
+            if (!visited[temp]) {
+                visited[temp] = true;
+                System.out.print(temp + " - ");
+
+                for (int w : this.adj[temp]) {
+                    stack.push(w);
                 }
             }
         }
